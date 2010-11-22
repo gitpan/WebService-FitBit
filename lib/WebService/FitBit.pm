@@ -1,6 +1,6 @@
 package WebService::FitBit;
 BEGIN {
-  $WebService::FitBit::VERSION = '0.1_1';
+  $WebService::FitBit::VERSION = '0.1_2';
 }
 BEGIN {
   $WebService::FitBit::AUTHORITY = 'cpan:GENEHACK';
@@ -412,7 +412,7 @@ WebService::FitBit - OO Perl API used to fetch fitness data from fitbit.com
 
 =head1 VERSION
 
-version 0.1_1
+version 0.1_2
 
 =head1 SYNOPSIS
 

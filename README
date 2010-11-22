@@ -3,7 +3,7 @@ NAME
     fitbit.com
 
 VERSION
-    version 0.1_1
+    version 0.1_2
 
 SYNOPSIS
         use WebService::FitBit;
