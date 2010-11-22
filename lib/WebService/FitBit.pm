@@ -1,6 +1,6 @@
 package WebService::FitBit;
 BEGIN {
-  $WebService::FitBit::VERSION = '0.1'; # TRIAL
+  $WebService::FitBit::VERSION = '0.1_1';
 }
 BEGIN {
   $WebService::FitBit::AUTHORITY = 'cpan:GENEHACK';
@@ -412,7 +412,7 @@ WebService::FitBit - OO Perl API used to fetch fitness data from fitbit.com
 
 =head1 VERSION
 
-version 0.1
+version 0.1_1
 
 =head1 SYNOPSIS
 
@@ -638,21 +638,35 @@ retrieve only the data that was explictly entered.
 
 =head1 KNOWN_ISSUES
 
-At this time, if you attempt to tally the intraday (5min) logs for
-the total daily number, this number will NOT match the number from
-the total_*_ API call.  This is due to the way that FitBit feeds the
-intraday values via XML to the flash-graph chart.  All numbers are
-whole numbers, and this rounding issue causes the detailed log
-tally to be between 10-100 points higher.
+At this time, if you attempt to tally the intraday (5min) logs for the total
+daily number, this number will NOT match the number from the equivalent API
+call for the total number.  This is due to the way that FitBit feeds the
+intraday values via XML to the flash-graph chart.  All numbers are whole
+numbers, and this rounding issue causes the detailed log tally to be between
+10-100 points higher.
 
 For example:
 
     # Calling total = 2122
-    print "Total calories burned = " . $fb->total_calories()->{burned} . "\n";
+    print "Total calories burned = " . $fb->calories_burned . "\n";
 
     # Tallying total from log entries = 2157
     my $total = 0;
-    $total += $_->{value} foreach ( $fb->get_calories_log($date) );
+    for my $day ( $fb->intraday_calories_burned ) {
+      my( $time , $value ) = %$day;
+      $total += $value;
+    }
+
+=head1 CREDITS
+
+Eric Blue did the initial version of this module, which solved most of the
+annoying issues around deciphering the URL parameters and XML formats.
+
+=head1 SEE ALSO
+
+L<The FitBit site|http://fitbit.com>
+
+L<Eric's original announcement|http://eric-blue.com/2010/05/11/fitbit-unofficial-perl-api-and-csv-download/>
 
 =for Pod::Coverage BUILD
 

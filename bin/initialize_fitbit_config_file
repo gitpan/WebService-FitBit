@@ -95,7 +95,7 @@ initialize_fitbit_config_file - generate a ~/.fitbit config for use by WebServic
 
 =head1 VERSION
 
-version 0.1
+version 0.1_1
 
 =head1 AUTHORS
 

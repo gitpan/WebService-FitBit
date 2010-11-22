@@ -40,13 +40,14 @@ my %WriteMakefileArgs = (
     'Moose' => '0',
     'POSIX' => '0',
     'Term::ReadKey' => '0',
+    'Text::CSV' => '0',
     'Try::Tiny' => '0',
     'XML::Simple' => '0',
     'YAML' => '0',
     'autodie' => '0',
     'strictures' => '1'
   },
-  'VERSION' => '0.1',
+  'VERSION' => '0.1_1',
   'test' => {
     'TESTS' => 't/*.t'
   }

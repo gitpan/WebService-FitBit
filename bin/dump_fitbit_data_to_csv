@@ -1,53 +1,76 @@
-#!/usr/bin/perl
+#!/usr/bin/env perl
 # PODNAME: dump_fitbit_data_to_csv
 # ABSTRACT: dump the last week's worth of FitBit data to a CSV file.
 use strictures 1;
+use 5.010;
 
 use autodie;
 use POSIX;
+use Text::CSV;
 use WebService::FitBit;
-
 
 my $file = shift
   or die "Provide file name to dump data into.";
 
-open( my $OUT , '>' , $file );
+open( my $OUT , '>:encoding(utf8)' , $file );
 
 my $fb = WebService::FitBit->new();
 
-my $day        = 86400;    # 1 day
-my $total_days = 7;
+my @days = get_day_list();
 
-### FIXME Text:CSV, anyone?
+my @header =  qw{
+                  DATE
+                  BURNED
+                  CONSUMED
+                  SCORE
+                  STEPS
+                  DISTANCE
+                  ACTIVE_VERY
+                  ACTIVE_FAIR
+                  ACTIVE_LIGHT
+                  SLEEP_TIME
+                  AWOKEN
+              };
 
-# Weekly CSV header
-print qq{DATE,BURNED,CONSUMED,SCORE,STEPS,DISTANCE,ACTIVE_VERY,ACTIVE_FAIR,ACTIVE_LIGHT,SLEEP_TIME,AWOKEN};
-print "\n";
+my $csv = Text::CSV->new({ binary => 1 , eol => "\n" });
+$csv->print( $OUT , \@header );
 
-for ( my $i = 0 ; $i < $total_days ; $i++ ) {
-  my $previous_day = strftime( "%F", localtime( time - $day ) );
-  print "Getting data for $previous_day ...\n";
+for my $date ( @days ) {
+  say "Dumping $date";
 
-  print $previous_day . ",";
-  print $fb->total_calories($previous_day)->{burned} . ",";
-  print $fb->total_calories($previous_day)->{consumed} . ",";
-  print $fb->total_active_score($previous_day) . ",";
-  print $fb->total_steps($previous_day) . ",";
-  print $fb->total_distance($previous_day) . ",";
+  my $minutes_active = $fb->minutes_active($date);
 
-  my $ah = $fb->total_active_hours($previous_day);
-  print $ah->{very} . ",";
-  print $ah->{fairly} . ",";
-  print $ah->{lightly} . ",";
+  my @row = (
+    $date ,
+    $fb->calories_burned($date) ,
+    $fb->calories_consumed($date) ,
+    $fb->active_score($date) ,
+    $fb->steps_taken($date) ,
+    $fb->distance_from_steps($date) ,
+    $minutes_active->{very} ,
+    $minutes_active->{fairly} ,
+    $minutes_active->{lightly} ,
+    $fb->time_asleep($date) ,
+    $fb->times_woken_up($date) ,
+  );
 
-  my $st = $fb->total_sleep_time($previous_day);
-  print $st->{hours_asleep} . ",";
-  print $st->{wakes} . "\n";
-
-  $day += 86400;
+  $csv->print( $OUT , \@row );
 }
 
 close( $OUT );
+
+sub get_day_list {
+  my $today = time;
+
+  my @days;
+
+  for ( 1 .. 7 ) {
+    push @days , strftime( "%F" , localtime($today));
+    $today -= 86400; # 1 day in seconds
+  }
+
+  return reverse @days;
+}
 
 __END__
 =pod
@@ -58,7 +81,7 @@ dump_fitbit_data_to_csv - dump the last week's worth of FitBit data to a CSV fil
 
 =head1 VERSION
 
-version 0.1
+version 0.1_1
 
 =head1 AUTHORS
 
