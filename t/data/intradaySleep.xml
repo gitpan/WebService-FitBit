@@ -1,0 +1,865 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<settings>  
+<text_color>#666666</text_color>                            <!-- [#000000] (hex color code) main text color. Every text color can be set individually in the settings below-->
+<digits_after_decimal>0</digits_after_decimal>               <!-- [] (Number) if your value has less digits after decimal then is set here, zeroes will be added -->
+<redraw>true</redraw>                                       <!-- [false] (true / false) if your chart's width or height is set in percents, and redraw is set to true, the chart will be redrawn then screen size changes -->
+<precision>0</precision>                  <!-- [2] (Number) shows how many numbers should be shown after comma for calculated values (percents) -->
+<depth>0</depth>                                           <!-- [0] (Number) the depth of chart and columns (for 3D effect) -->
+<angle>0</angle>                                           <!-- [30] (0 - 90) angle of chart area and columns (for 3D effect) -->
+<js_enabled></js_enabled>                                   <!-- [true] (true / false) In case you don't use any flash - JavaScript communication, you shuold set this setting to false - this will save some CPU and will disable the security warning message which appears when opening the chart from hard drive. -->  
+<decimals_separator>.</decimals_separator>                   <!-- [,] (string) decimal separator. Note, that this is for displaying data only. Decimals in data xml file must be separated with dot -->
+<thousands_separator>none</thousands_separator>
+<column>
+<type></type>                                             <!-- [clustered] (clustered, stacked, 100% stacked, 3d column) -->
+<width>70</width>                                         <!-- [80] (0 - 100) width of column (in percents)  -->
+<spacing>0</spacing>                                      <!-- [5] (Number) space between columns of one category axis value, in pixels. Negative values can be used. -->
+<balloon_text>
+<![CDATA[{description}]]>                      <!-- [] ({title} {value} {series} {percents} {start} {difference} {total}) You can format any data label: {title} will be replaced with real title, {value} - with value and so on. You can add your own text or html code too. -->
+</balloon_text>    
+<grow_effect>elastic</grow_effect>                        <!-- [elastic] (elastic, regular, strong) -->
+<grow_time>0</grow_time>                                  <!-- [0] (Number) grow time in seconds. Leave 0 to appear instantly -->
+<sequenced_grow>true</sequenced_grow>                         <!-- [false] (true / false) whether columns should grow at the same time or one after another -->        
+<hover_brightness>50</hover_brightness>                     <!-- [0] (from -255 to 255) The column may darken/lighten when the use rolls over it. The intensity may be set here -->
+<bullet_offset>16</bullet_offset>
+</column>
+<line>                                                      <!-- Here are general settings for "line" graph type. You can set most of these settings for individual lines in graph settings below -->
+<connect>true</connect>                                       <!-- [false] (true / false) whether to connect points if data is missing -->
+<width>2</width>                                           <!-- [2] (Number) line width -->
+<alpha></alpha>                                           <!-- [100] (Number) line alpha -->
+<fill_alpha></fill_alpha>                                 <!-- [0] (Number) fill alpha -->
+<bullet>round</bullet>                                    <!-- [] (square, round, square_outlined, round_outlined, square_outline, round_outline, filename.swf) can be used predefined bullets or loaded custom bullets. Leave empty if you don't want to have bullets at all. Outlined bullets use plot area color for outline color -->
+<bullet_size>4</bullet_size>                               <!-- [8] (Number) bullet size -->
+<balloon_text>                                                    
+<![CDATA[{description}]]>                      <!-- [] ({title} {value} {series} {percents} {start} {difference} {total}) You can format any data label: {title} will be replaced with real title, {value} - with value and so on. You can add your own text or html code too. -->
+</balloon_text>    
+</line>
+<background>                                                <!-- BACKGROUND -->
+<color></color>                                           <!-- [#FFFFFF] (hex color code) Separate color codes with comas for gradient -->
+<alpha></alpha>                                           <!-- [0] (0 - 100) use 0 if you are using custom swf or jpg for background -->
+<border_color></border_color>                             <!-- [#000000] (hex color code) -->
+<border_alpha>0</border_alpha>                           <!-- [0] (0 - 100) -->
+<file></file>                                             <!-- [] (filename) swf or jpg file of a background. Do not use progressive jpg file, it will be not visible with flash player 7 -->
+</background>
+<plot_area>                                                 <!-- PLOT AREA (the area between axes) -->
+<color>#ffffff</color>                                           <!-- [#FFFFFF] (hex color code) Separate color codes with comas for gradient -->
+<alpha>100</alpha>                                           <!-- [#FFFFFF] (hex color code) Separate color codes with comas for gradient -->
+<border_color>666666</border_color>                             <!-- [#000000] (hex color code) -->                                        
+<border_alpha>0</border_alpha>                             <!-- [0] (0 - 100) -->                                            
+<margins>                                                 <!-- plot area margins -->
+<left>15</left>                                         <!-- [60](Number / Number%) --> 
+<top>5</top>                                           <!-- [60](Number / Number%) --> 
+<right>15</right>                                       <!-- [60](Number / Number%) -->
+<bottom>25</bottom>                                     <!-- [80](Number / Number%) -->
+</margins>
+</plot_area>
+<grid>                                                      <!-- GRID -->
+<category>                                                <!-- category axis grid -->                                                     
+<color></color>
+<alpha>0</alpha>                                        <!-- [15] (0 - 100) -->
+</category>
+<value>                                                   <!-- value axis grid -->      
+<color>#FFFFFF</color>
+<alpha>100</alpha>                                        <!-- [15] (0 - 100) -->
+<approx_count>8</approx_count>                          <!-- [10] (Number) approximate number of gridlines -->
+</value>
+</grid>
+<values>                                                    <!-- VALUES -->
+<category>                                                <!-- category axis -->
+<enabled>true</enabled>
+<!-- [#FFFFFF] (hex color code) Separate color codes with comas for gradient -->
+<frequency>60</frequency>
+<!-- [#FFFFFF] (hex color code) Separate color codes with comas for gradient -->
+<start_from>30</start_from>                               <!-- [1] (Number) you can set series from which category values will be displayed -->
+<!-- [#FFFFFF] (hex color code) Separate color codes with comas for gradient -->
+</category>
+<value>                                                   <!-- value axis -->
+<enabled>false</enabled>
+<!-- [#FFFFFF] (hex color code) Separate color codes with comas for gradient -->
+<min>0.0</min>                                            <!-- [] (Number) minimum value of this axis. If empty, this value will be calculated automatically. -->
+<max>7.0</max>                                             <!-- [] (Number) maximum value of this axis. If empty, this value will be calculated automatically -->
+<skip_first></skip_first>                               <!-- [true] (true / false) to skip or not first value -->
+<skip_last>false</skip_last>                                 <!-- [false] (true / false) to skip or not last value -->
+<frequency>1</frequency>
+<integers_only>false</integers_only>                         <!-- [false] (true / false) if set to true, values with decimals will be omitted -->
+</value>
+</values>
+<axes>                                                      <!-- axes -->
+<category>                                                <!-- category axis -->
+<alpha>0</alpha>                                        <!-- [100] (0 - 100) -->
+<width>0</width>                                         <!-- [2] (Number) line width, 0 for hairline -->
+</category>
+<value>                                                   <!-- value axis -->
+<color>#FFFFFF</color>
+<alpha>100</alpha>                                        <!-- [100] (0 - 100) -->
+<width>0</width>                                        <!-- [2] (Number) line width, 0 for hairline -->
+<tick_length>5</tick_length>                            <!-- [7] (Number) -->
+</value>
+</axes>  
+<balloon>                                                   <!-- BALLOON -->
+<enabled>true</enabled>                                       <!-- [true] (true / false) -->
+<color></color>                                           <!-- [] (hex color code) balloon background color. If empty, slightly darker then current column color will be used -->
+<alpha>80</alpha>                                           <!-- [100] (0 - 100) -->
+<text_color>#ffffff</text_color>                                 <!-- [0xFFFFFF] (hex color code) -->
+<text_size></text_size>                                   <!-- [text_size] (Number) -->
+<max_width></max_width>                                   <!-- [220] (Number) The maximum width of a balloon -->
+<corner_radius>0</corner_radius>                           <!-- [0] (Number) Corner radius of a balloon. If you set it > 0, the balloon will not display arrow -->
+<border_width>0</border_width>                             <!-- [0] (Number) -->
+<border_alpha>60</border_alpha>                             <!-- [balloon.alpha] (Number) -->
+<border_color>#ffffff</border_color>                             <!-- [balloon.color] (hex color code) -->        
+</balloon>
+<legend>                                                    <!-- LEGEND -->
+<enabled>false</enabled>                                  <!-- [true] (true / false) -->
+</legend>  
+<error_messages>                                            <!-- "error_messages" settings will be applied for all error messages except the one which is showed if settings file wasn't found -->
+<enabled>false</enabled>                                       <!-- [true] (true / false) -->
+<x></x>                                                   <!-- [] (Number / Number% / !Number) x position of error message. If not set, will be aligned to the center -->
+<y></y>                                                   <!-- [] (Number / Number% / !Number) y position of error message. If not set, will be aligned to the center -->
+<color></color>                                           <!-- [#BBBB00] (hex color code) background color of error message. Separate color codes with comas for gradient -->
+<alpha></alpha>                                           <!-- [100] (0 - 100) background alpha -->
+<text_color></text_color>                                 <!-- [#FFFFFF] (hex color code) -->
+<text_size></text_size>                                   <!-- [text_size] (Number) -->
+</error_messages>    
+<strings>
+<no_data></no_data>                                       <!-- [No data for selected period] (text) if data is missing, this message will be displayed -->
+</strings>  
+<!-- [#FFFFFF] (hex color code) Separate color codes with comas for gradient -->
+<graphs>                                                    <!-- GRAPHS SETTINGS. These settings can also be specified in data file, as attributes of <graph>, in this case you can delete everything from <graphs> to </graphs> (including) -->
+<graph gid='0'>
+<color>#ff3366</color>                                  <!-- [] (hex color code) -->
+</graph>
+</graphs>
+<data>
+<chart>
+<series>
+<value xid='0'></value>
+<value xid='1'></value>
+<value xid='2'></value>
+<value xid='3'></value>
+<value xid='4'></value>
+<value xid='5'></value>
+<value xid='6'></value>
+<value xid='7'></value>
+<value xid='8'></value>
+<value xid='9'></value>
+<value xid='10'></value>
+<value xid='11'></value>
+<value xid='12'></value>
+<value xid='13'></value>
+<value xid='14'></value>
+<value xid='15'></value>
+<value xid='16'></value>
+<value xid='17'></value>
+<value xid='18'></value>
+<value xid='19'></value>
+<value xid='20'></value>
+<value xid='21'></value>
+<value xid='22'></value>
+<value xid='23'></value>
+<value xid='24'></value>
+<value xid='25'></value>
+<value xid='26'></value>
+<value xid='27'></value>
+<value xid='28'></value>
+<value xid='29'>23</value>
+<value xid='30'></value>
+<value xid='31'></value>
+<value xid='32'></value>
+<value xid='33'></value>
+<value xid='34'></value>
+<value xid='35'></value>
+<value xid='36'></value>
+<value xid='37'></value>
+<value xid='38'></value>
+<value xid='39'></value>
+<value xid='40'></value>
+<value xid='41'></value>
+<value xid='42'></value>
+<value xid='43'></value>
+<value xid='44'></value>
+<value xid='45'></value>
+<value xid='46'></value>
+<value xid='47'></value>
+<value xid='48'></value>
+<value xid='49'></value>
+<value xid='50'></value>
+<value xid='51'></value>
+<value xid='52'></value>
+<value xid='53'></value>
+<value xid='54'></value>
+<value xid='55'></value>
+<value xid='56'></value>
+<value xid='57'></value>
+<value xid='58'></value>
+<value xid='59'></value>
+<value xid='60'></value>
+<value xid='61'></value>
+<value xid='62'></value>
+<value xid='63'></value>
+<value xid='64'></value>
+<value xid='65'></value>
+<value xid='66'></value>
+<value xid='67'></value>
+<value xid='68'></value>
+<value xid='69'></value>
+<value xid='70'></value>
+<value xid='71'></value>
+<value xid='72'></value>
+<value xid='73'></value>
+<value xid='74'></value>
+<value xid='75'></value>
+<value xid='76'></value>
+<value xid='77'></value>
+<value xid='78'></value>
+<value xid='79'></value>
+<value xid='80'></value>
+<value xid='81'></value>
+<value xid='82'></value>
+<value xid='83'></value>
+<value xid='84'></value>
+<value xid='85'></value>
+<value xid='86'></value>
+<value xid='87'></value>
+<value xid='88'></value>
+<value xid='89'>0</value>
+<value xid='90'></value>
+<value xid='91'></value>
+<value xid='92'></value>
+<value xid='93'></value>
+<value xid='94'></value>
+<value xid='95'></value>
+<value xid='96'></value>
+<value xid='97'></value>
+<value xid='98'></value>
+<value xid='99'></value>
+<value xid='100'></value>
+<value xid='101'></value>
+<value xid='102'></value>
+<value xid='103'></value>
+<value xid='104'></value>
+<value xid='105'></value>
+<value xid='106'></value>
+<value xid='107'></value>
+<value xid='108'></value>
+<value xid='109'></value>
+<value xid='110'></value>
+<value xid='111'></value>
+<value xid='112'></value>
+<value xid='113'></value>
+<value xid='114'></value>
+<value xid='115'></value>
+<value xid='116'></value>
+<value xid='117'></value>
+<value xid='118'></value>
+<value xid='119'></value>
+<value xid='120'></value>
+<value xid='121'></value>
+<value xid='122'></value>
+<value xid='123'></value>
+<value xid='124'></value>
+<value xid='125'></value>
+<value xid='126'></value>
+<value xid='127'></value>
+<value xid='128'></value>
+<value xid='129'></value>
+<value xid='130'></value>
+<value xid='131'></value>
+<value xid='132'></value>
+<value xid='133'></value>
+<value xid='134'></value>
+<value xid='135'></value>
+<value xid='136'></value>
+<value xid='137'></value>
+<value xid='138'></value>
+<value xid='139'></value>
+<value xid='140'></value>
+<value xid='141'></value>
+<value xid='142'></value>
+<value xid='143'></value>
+<value xid='144'></value>
+<value xid='145'></value>
+<value xid='146'></value>
+<value xid='147'></value>
+<value xid='148'></value>
+<value xid='149'>1</value>
+<value xid='150'></value>
+<value xid='151'></value>
+<value xid='152'></value>
+<value xid='153'></value>
+<value xid='154'></value>
+<value xid='155'></value>
+<value xid='156'></value>
+<value xid='157'></value>
+<value xid='158'></value>
+<value xid='159'></value>
+<value xid='160'></value>
+<value xid='161'></value>
+<value xid='162'></value>
+<value xid='163'></value>
+<value xid='164'></value>
+<value xid='165'></value>
+<value xid='166'></value>
+<value xid='167'></value>
+<value xid='168'></value>
+<value xid='169'></value>
+<value xid='170'></value>
+<value xid='171'></value>
+<value xid='172'></value>
+<value xid='173'></value>
+<value xid='174'></value>
+<value xid='175'></value>
+<value xid='176'></value>
+<value xid='177'></value>
+<value xid='178'></value>
+<value xid='179'></value>
+<value xid='180'></value>
+<value xid='181'></value>
+<value xid='182'></value>
+<value xid='183'></value>
+<value xid='184'></value>
+<value xid='185'></value>
+<value xid='186'></value>
+<value xid='187'></value>
+<value xid='188'></value>
+<value xid='189'></value>
+<value xid='190'></value>
+<value xid='191'></value>
+<value xid='192'></value>
+<value xid='193'></value>
+<value xid='194'></value>
+<value xid='195'></value>
+<value xid='196'></value>
+<value xid='197'></value>
+<value xid='198'></value>
+<value xid='199'></value>
+<value xid='200'></value>
+<value xid='201'></value>
+<value xid='202'></value>
+<value xid='203'></value>
+<value xid='204'></value>
+<value xid='205'></value>
+<value xid='206'></value>
+<value xid='207'></value>
+<value xid='208'></value>
+<value xid='209'>2</value>
+<value xid='210'></value>
+<value xid='211'></value>
+<value xid='212'></value>
+<value xid='213'></value>
+<value xid='214'></value>
+<value xid='215'></value>
+<value xid='216'></value>
+<value xid='217'></value>
+<value xid='218'></value>
+<value xid='219'></value>
+<value xid='220'></value>
+<value xid='221'></value>
+<value xid='222'></value>
+<value xid='223'></value>
+<value xid='224'></value>
+<value xid='225'></value>
+<value xid='226'></value>
+<value xid='227'></value>
+<value xid='228'></value>
+<value xid='229'></value>
+<value xid='230'></value>
+<value xid='231'></value>
+<value xid='232'></value>
+<value xid='233'></value>
+<value xid='234'></value>
+<value xid='235'></value>
+<value xid='236'></value>
+<value xid='237'></value>
+<value xid='238'></value>
+<value xid='239'></value>
+<value xid='240'></value>
+<value xid='241'></value>
+<value xid='242'></value>
+<value xid='243'></value>
+<value xid='244'></value>
+<value xid='245'></value>
+<value xid='246'></value>
+<value xid='247'></value>
+<value xid='248'></value>
+<value xid='249'></value>
+<value xid='250'></value>
+<value xid='251'></value>
+<value xid='252'></value>
+<value xid='253'></value>
+<value xid='254'></value>
+<value xid='255'></value>
+<value xid='256'></value>
+<value xid='257'></value>
+<value xid='258'></value>
+<value xid='259'></value>
+<value xid='260'></value>
+<value xid='261'></value>
+<value xid='262'></value>
+<value xid='263'></value>
+<value xid='264'></value>
+<value xid='265'></value>
+<value xid='266'></value>
+<value xid='267'></value>
+<value xid='268'></value>
+<value xid='269'>3</value>
+<value xid='270'></value>
+<value xid='271'></value>
+<value xid='272'></value>
+<value xid='273'></value>
+<value xid='274'></value>
+<value xid='275'></value>
+<value xid='276'></value>
+<value xid='277'></value>
+<value xid='278'></value>
+<value xid='279'></value>
+<value xid='280'></value>
+<value xid='281'></value>
+<value xid='282'></value>
+<value xid='283'></value>
+<value xid='284'></value>
+<value xid='285'></value>
+<value xid='286'></value>
+<value xid='287'></value>
+<value xid='288'></value>
+<value xid='289'></value>
+<value xid='290'></value>
+<value xid='291'></value>
+<value xid='292'></value>
+<value xid='293'></value>
+<value xid='294'></value>
+<value xid='295'></value>
+<value xid='296'></value>
+<value xid='297'></value>
+<value xid='298'></value>
+<value xid='299'></value>
+<value xid='300'></value>
+<value xid='301'></value>
+<value xid='302'></value>
+<value xid='303'></value>
+<value xid='304'></value>
+<value xid='305'></value>
+<value xid='306'></value>
+<value xid='307'></value>
+<value xid='308'></value>
+<value xid='309'></value>
+<value xid='310'></value>
+<value xid='311'></value>
+<value xid='312'></value>
+<value xid='313'></value>
+<value xid='314'></value>
+<value xid='315'></value>
+<value xid='316'></value>
+<value xid='317'></value>
+<value xid='318'></value>
+<value xid='319'></value>
+<value xid='320'></value>
+<value xid='321'></value>
+<value xid='322'></value>
+<value xid='323'></value>
+<value xid='324'></value>
+<value xid='325'></value>
+<value xid='326'></value>
+<value xid='327'></value>
+<value xid='328'></value>
+<value xid='329'>4</value>
+<value xid='330'></value>
+<value xid='331'></value>
+<value xid='332'></value>
+<value xid='333'></value>
+<value xid='334'></value>
+<value xid='335'></value>
+<value xid='336'></value>
+<value xid='337'></value>
+<value xid='338'></value>
+<value xid='339'></value>
+<value xid='340'></value>
+<value xid='341'></value>
+<value xid='342'></value>
+<value xid='343'></value>
+<value xid='344'></value>
+<value xid='345'></value>
+<value xid='346'></value>
+<value xid='347'></value>
+<value xid='348'></value>
+<value xid='349'></value>
+<value xid='350'></value>
+<value xid='351'></value>
+<value xid='352'></value>
+<value xid='353'></value>
+<value xid='354'></value>
+<value xid='355'></value>
+<value xid='356'></value>
+<value xid='357'></value>
+<value xid='358'></value>
+<value xid='359'></value>
+<value xid='360'></value>
+<value xid='361'></value>
+</series>
+<graphs>
+<graph gid='0'>
+<value xid='0' description='awake at 22:31' color="#ff3366" >3.0</value>
+<value xid='1' description='awake at 22:32' color="#ff3366" >3.0</value>
+<value xid='2' description='awake at 22:33' color="#ff3366" >3.0</value>
+<value xid='3' description='awake at 22:34' color="#ff3366" >2.0</value>
+<value xid='4' description='awake at 22:35' color="#ff3366" >3.0</value>
+<value xid='5' description='awake at 22:36' color="#ff3366" >3.0</value>
+<value xid='6' description='awake at 22:37' color="#ff3366" >3.0</value>
+<value xid='7' description='asleep at 22:38' color="#33cccc" >1.0</value>
+<value xid='8' description='asleep at 22:39' color="#33cccc" >1.0</value>
+<value xid='9' description='asleep at 22:40' color="#33cccc" >1.0</value>
+<value xid='10' description='asleep at 22:41' color="#33cccc" >1.0</value>
+<value xid='11' description='asleep at 22:42' color="#33cccc" >1.0</value>
+<value xid='12' description='asleep at 22:43' color="#33cccc" >1.0</value>
+<value xid='13' description='asleep at 22:44' color="#33cccc" >1.0</value>
+<value xid='14' description='asleep at 22:45' color="#33cccc" >1.0</value>
+<value xid='15' description='asleep at 22:46' color="#33cccc" >1.0</value>
+<value xid='16' description='asleep at 22:47' color="#33cccc" >1.0</value>
+<value xid='17' description='asleep at 22:48' color="#33cccc" >1.0</value>
+<value xid='18' description='asleep at 22:49' color="#33cccc" >1.0</value>
+<value xid='19' description='asleep at 22:50' color="#33cccc" >1.0</value>
+<value xid='20' description='asleep at 22:51' color="#33cccc" >1.0</value>
+<value xid='21' description='awake at 22:52' color="#ff3366" >3.0</value>
+<value xid='22' description='asleep at 22:53' color="#33cccc" >1.0</value>
+<value xid='23' description='asleep at 22:54' color="#33cccc" >1.0</value>
+<value xid='24' description='asleep at 22:55' color="#33cccc" >1.0</value>
+<value xid='25' description='asleep at 22:56' color="#33cccc" >1.0</value>
+<value xid='26' description='asleep at 22:57' color="#33cccc" >1.0</value>
+<value xid='27' description='asleep at 22:58' color="#33cccc" >1.0</value>
+<value xid='28' description='asleep at 22:59' color="#33cccc" >1.0</value>
+<value xid='29' description='asleep at 23:00' color="#33cccc" >1.0</value>
+<value xid='30' description='asleep at 23:01' color="#33cccc" >1.0</value>
+<value xid='31' description='asleep at 23:02' color="#33cccc" >1.0</value>
+<value xid='32' description='asleep at 23:03' color="#33cccc" >1.0</value>
+<value xid='33' description='asleep at 23:04' color="#33cccc" >1.0</value>
+<value xid='34' description='asleep at 23:05' color="#33cccc" >1.0</value>
+<value xid='35' description='asleep at 23:06' color="#33cccc" >1.0</value>
+<value xid='36' description='asleep at 23:07' color="#33cccc" >1.0</value>
+<value xid='37' description='asleep at 23:08' color="#33cccc" >1.0</value>
+<value xid='38' description='asleep at 23:09' color="#33cccc" >1.0</value>
+<value xid='39' description='asleep at 23:10' color="#33cccc" >1.0</value>
+<value xid='40' description='asleep at 23:11' color="#33cccc" >1.0</value>
+<value xid='41' description='asleep at 23:12' color="#33cccc" >1.0</value>
+<value xid='42' description='asleep at 23:13' color="#33cccc" >1.0</value>
+<value xid='43' description='asleep at 23:14' color="#33cccc" >1.0</value>
+<value xid='44' description='asleep at 23:15' color="#33cccc" >1.0</value>
+<value xid='45' description='asleep at 23:16' color="#33cccc" >1.0</value>
+<value xid='46' description='asleep at 23:17' color="#33cccc" >1.0</value>
+<value xid='47' description='asleep at 23:18' color="#33cccc" >1.0</value>
+<value xid='48' description='asleep at 23:19' color="#33cccc" >1.0</value>
+<value xid='49' description='asleep at 23:20' color="#33cccc" >1.0</value>
+<value xid='50' description='asleep at 23:21' color="#33cccc" >1.0</value>
+<value xid='51' description='asleep at 23:22' color="#33cccc" >1.0</value>
+<value xid='52' description='asleep at 23:23' color="#33cccc" >1.0</value>
+<value xid='53' description='asleep at 23:24' color="#33cccc" >1.0</value>
+<value xid='54' description='asleep at 23:25' color="#33cccc" >1.0</value>
+<value xid='55' description='asleep at 23:26' color="#33cccc" >1.0</value>
+<value xid='56' description='asleep at 23:27' color="#33cccc" >1.0</value>
+<value xid='57' description='asleep at 23:28' color="#33cccc" >1.0</value>
+<value xid='58' description='asleep at 23:29' color="#33cccc" >1.0</value>
+<value xid='59' description='asleep at 23:30' color="#33cccc" >1.0</value>
+<value xid='60' description='asleep at 23:31' color="#33cccc" >1.0</value>
+<value xid='61' description='asleep at 23:32' color="#33cccc" >1.0</value>
+<value xid='62' description='asleep at 23:33' color="#33cccc" >1.0</value>
+<value xid='63' description='asleep at 23:34' color="#33cccc" >1.0</value>
+<value xid='64' description='asleep at 23:35' color="#33cccc" >1.0</value>
+<value xid='65' description='asleep at 23:36' color="#33cccc" >1.0</value>
+<value xid='66' description='awake at 23:37' color="#ff3366" >2.0</value>
+<value xid='67' description='awake at 23:38' color="#ff3366" >3.0</value>
+<value xid='68' description='asleep at 23:39' color="#33cccc" >1.0</value>
+<value xid='69' description='asleep at 23:40' color="#33cccc" >1.0</value>
+<value xid='70' description='asleep at 23:41' color="#33cccc" >1.0</value>
+<value xid='71' description='asleep at 23:42' color="#33cccc" >1.0</value>
+<value xid='72' description='asleep at 23:43' color="#33cccc" >1.0</value>
+<value xid='73' description='asleep at 23:44' color="#33cccc" >1.0</value>
+<value xid='74' description='asleep at 23:45' color="#33cccc" >1.0</value>
+<value xid='75' description='asleep at 23:46' color="#33cccc" >1.0</value>
+<value xid='76' description='asleep at 23:47' color="#33cccc" >1.0</value>
+<value xid='77' description='asleep at 23:48' color="#33cccc" >1.0</value>
+<value xid='78' description='asleep at 23:49' color="#33cccc" >1.0</value>
+<value xid='79' description='asleep at 23:50' color="#33cccc" >1.0</value>
+<value xid='80' description='asleep at 23:51' color="#33cccc" >1.0</value>
+<value xid='81' description='asleep at 23:52' color="#33cccc" >1.0</value>
+<value xid='82' description='asleep at 23:53' color="#33cccc" >1.0</value>
+<value xid='83' description='asleep at 23:54' color="#33cccc" >1.0</value>
+<value xid='84' description='asleep at 23:55' color="#33cccc" >1.0</value>
+<value xid='85' description='asleep at 23:56' color="#33cccc" >1.0</value>
+<value xid='86' description='asleep at 23:57' color="#33cccc" >1.0</value>
+<value xid='87' description='asleep at 23:58' color="#33cccc" >1.0</value>
+<value xid='88' description='asleep at 23:59' color="#33cccc" >1.0</value>
+<value xid='89' description='asleep at 0:00' color="#33cccc" >1.0</value>
+<value xid='90' description='asleep at 0:01' color="#33cccc" >1.0</value>
+<value xid='91' description='asleep at 0:02' color="#33cccc" >1.0</value>
+<value xid='92' description='asleep at 0:03' color="#33cccc" >1.0</value>
+<value xid='93' description='asleep at 0:04' color="#33cccc" >1.0</value>
+<value xid='94' description='asleep at 0:05' color="#33cccc" >1.0</value>
+<value xid='95' description='asleep at 0:06' color="#33cccc" >1.0</value>
+<value xid='96' description='asleep at 0:07' color="#33cccc" >1.0</value>
+<value xid='97' description='asleep at 0:08' color="#33cccc" >1.0</value>
+<value xid='98' description='asleep at 0:09' color="#33cccc" >1.0</value>
+<value xid='99' description='asleep at 0:10' color="#33cccc" >1.0</value>
+<value xid='100' description='asleep at 0:11' color="#33cccc" >1.0</value>
+<value xid='101' description='asleep at 0:12' color="#33cccc" >1.0</value>
+<value xid='102' description='asleep at 0:13' color="#33cccc" >1.0</value>
+<value xid='103' description='asleep at 0:14' color="#33cccc" >1.0</value>
+<value xid='104' description='asleep at 0:15' color="#33cccc" >1.0</value>
+<value xid='105' description='asleep at 0:16' color="#33cccc" >1.0</value>
+<value xid='106' description='asleep at 0:17' color="#33cccc" >1.0</value>
+<value xid='107' description='asleep at 0:18' color="#33cccc" >1.0</value>
+<value xid='108' description='asleep at 0:19' color="#33cccc" >1.0</value>
+<value xid='109' description='asleep at 0:20' color="#33cccc" >1.0</value>
+<value xid='110' description='asleep at 0:21' color="#33cccc" >1.0</value>
+<value xid='111' description='asleep at 0:22' color="#33cccc" >1.0</value>
+<value xid='112' description='asleep at 0:23' color="#33cccc" >1.0</value>
+<value xid='113' description='asleep at 0:24' color="#33cccc" >1.0</value>
+<value xid='114' description='asleep at 0:25' color="#33cccc" >1.0</value>
+<value xid='115' description='asleep at 0:26' color="#33cccc" >1.0</value>
+<value xid='116' description='asleep at 0:27' color="#33cccc" >1.0</value>
+<value xid='117' description='asleep at 0:28' color="#33cccc" >1.0</value>
+<value xid='118' description='asleep at 0:29' color="#33cccc" >1.0</value>
+<value xid='119' description='asleep at 0:30' color="#33cccc" >1.0</value>
+<value xid='120' description='asleep at 0:31' color="#33cccc" >1.0</value>
+<value xid='121' description='asleep at 0:32' color="#33cccc" >1.0</value>
+<value xid='122' description='asleep at 0:33' color="#33cccc" >1.0</value>
+<value xid='123' description='asleep at 0:34' color="#33cccc" >1.0</value>
+<value xid='124' description='asleep at 0:35' color="#33cccc" >1.0</value>
+<value xid='125' description='asleep at 0:36' color="#33cccc" >1.0</value>
+<value xid='126' description='asleep at 0:37' color="#33cccc" >1.0</value>
+<value xid='127' description='asleep at 0:38' color="#33cccc" >1.0</value>
+<value xid='128' description='asleep at 0:39' color="#33cccc" >1.0</value>
+<value xid='129' description='asleep at 0:40' color="#33cccc" >1.0</value>
+<value xid='130' description='asleep at 0:41' color="#33cccc" >1.0</value>
+<value xid='131' description='asleep at 0:42' color="#33cccc" >1.0</value>
+<value xid='132' description='asleep at 0:43' color="#33cccc" >1.0</value>
+<value xid='133' description='asleep at 0:44' color="#33cccc" >1.0</value>
+<value xid='134' description='asleep at 0:45' color="#33cccc" >1.0</value>
+<value xid='135' description='asleep at 0:46' color="#33cccc" >1.0</value>
+<value xid='136' description='asleep at 0:47' color="#33cccc" >1.0</value>
+<value xid='137' description='asleep at 0:48' color="#33cccc" >1.0</value>
+<value xid='138' description='asleep at 0:49' color="#33cccc" >1.0</value>
+<value xid='139' description='asleep at 0:50' color="#33cccc" >1.0</value>
+<value xid='140' description='asleep at 0:51' color="#33cccc" >1.0</value>
+<value xid='141' description='asleep at 0:52' color="#33cccc" >1.0</value>
+<value xid='142' description='asleep at 0:53' color="#33cccc" >1.0</value>
+<value xid='143' description='asleep at 0:54' color="#33cccc" >1.0</value>
+<value xid='144' description='asleep at 0:55' color="#33cccc" >1.0</value>
+<value xid='145' description='asleep at 0:56' color="#33cccc" >1.0</value>
+<value xid='146' description='asleep at 0:57' color="#33cccc" >1.0</value>
+<value xid='147' description='asleep at 0:58' color="#33cccc" >1.0</value>
+<value xid='148' description='asleep at 0:59' color="#33cccc" >1.0</value>
+<value xid='149' description='asleep at 1:00' color="#33cccc" >1.0</value>
+<value xid='150' description='asleep at 1:01' color="#33cccc" >1.0</value>
+<value xid='151' description='asleep at 1:02' color="#33cccc" >1.0</value>
+<value xid='152' description='asleep at 1:03' color="#33cccc" >1.0</value>
+<value xid='153' description='asleep at 1:04' color="#33cccc" >1.0</value>
+<value xid='154' description='asleep at 1:05' color="#33cccc" >1.0</value>
+<value xid='155' description='asleep at 1:06' color="#33cccc" >1.0</value>
+<value xid='156' description='asleep at 1:07' color="#33cccc" >1.0</value>
+<value xid='157' description='asleep at 1:08' color="#33cccc" >1.0</value>
+<value xid='158' description='awake at 1:09' color="#ff3366" >2.0</value>
+<value xid='159' description='awake at 1:10' color="#ff3366" >2.0</value>
+<value xid='160' description='awake at 1:11' color="#ff3366" >2.0</value>
+<value xid='161' description='awake at 1:12' color="#ff3366" >2.0</value>
+<value xid='162' description='awake at 1:13' color="#ff3366" >2.0</value>
+<value xid='163' description='awake at 1:14' color="#ff3366" >2.0</value>
+<value xid='164' description='asleep at 1:15' color="#33cccc" >1.0</value>
+<value xid='165' description='asleep at 1:16' color="#33cccc" >1.0</value>
+<value xid='166' description='asleep at 1:17' color="#33cccc" >1.0</value>
+<value xid='167' description='asleep at 1:18' color="#33cccc" >1.0</value>
+<value xid='168' description='asleep at 1:19' color="#33cccc" >1.0</value>
+<value xid='169' description='asleep at 1:20' color="#33cccc" >1.0</value>
+<value xid='170' description='awake at 1:21' color="#ff3366" >2.0</value>
+<value xid='171' description='awake at 1:22' color="#ff3366" >2.0</value>
+<value xid='172' description='awake at 1:23' color="#ff3366" >2.0</value>
+<value xid='173' description='awake at 1:24' color="#ff3366" >2.0</value>
+<value xid='174' description='awake at 1:25' color="#ff3366" >2.0</value>
+<value xid='175' description='asleep at 1:26' color="#33cccc" >1.0</value>
+<value xid='176' description='awake at 1:27' color="#ff3366" >2.0</value>
+<value xid='177' description='asleep at 1:28' color="#33cccc" >1.0</value>
+<value xid='178' description='asleep at 1:29' color="#33cccc" >1.0</value>
+<value xid='179' description='asleep at 1:30' color="#33cccc" >1.0</value>
+<value xid='180' description='asleep at 1:31' color="#33cccc" >1.0</value>
+<value xid='181' description='asleep at 1:32' color="#33cccc" >1.0</value>
+<value xid='182' description='asleep at 1:33' color="#33cccc" >1.0</value>
+<value xid='183' description='asleep at 1:34' color="#33cccc" >1.0</value>
+<value xid='184' description='asleep at 1:35' color="#33cccc" >1.0</value>
+<value xid='185' description='asleep at 1:36' color="#33cccc" >1.0</value>
+<value xid='186' description='asleep at 1:37' color="#33cccc" >1.0</value>
+<value xid='187' description='asleep at 1:38' color="#33cccc" >1.0</value>
+<value xid='188' description='asleep at 1:39' color="#33cccc" >1.0</value>
+<value xid='189' description='asleep at 1:40' color="#33cccc" >1.0</value>
+<value xid='190' description='asleep at 1:41' color="#33cccc" >1.0</value>
+<value xid='191' description='asleep at 1:42' color="#33cccc" >1.0</value>
+<value xid='192' description='asleep at 1:43' color="#33cccc" >1.0</value>
+<value xid='193' description='asleep at 1:44' color="#33cccc" >1.0</value>
+<value xid='194' description='asleep at 1:45' color="#33cccc" >1.0</value>
+<value xid='195' description='asleep at 1:46' color="#33cccc" >1.0</value>
+<value xid='196' description='asleep at 1:47' color="#33cccc" >1.0</value>
+<value xid='197' description='asleep at 1:48' color="#33cccc" >1.0</value>
+<value xid='198' description='asleep at 1:49' color="#33cccc" >1.0</value>
+<value xid='199' description='asleep at 1:50' color="#33cccc" >1.0</value>
+<value xid='200' description='asleep at 1:51' color="#33cccc" >1.0</value>
+<value xid='201' description='asleep at 1:52' color="#33cccc" >1.0</value>
+<value xid='202' description='asleep at 1:53' color="#33cccc" >1.0</value>
+<value xid='203' description='asleep at 1:54' color="#33cccc" >1.0</value>
+<value xid='204' description='asleep at 1:55' color="#33cccc" >1.0</value>
+<value xid='205' description='asleep at 1:56' color="#33cccc" >1.0</value>
+<value xid='206' description='asleep at 1:57' color="#33cccc" >1.0</value>
+<value xid='207' description='asleep at 1:58' color="#33cccc" >1.0</value>
+<value xid='208' description='asleep at 1:59' color="#33cccc" >1.0</value>
+<value xid='209' description='asleep at 2:00' color="#33cccc" >1.0</value>
+<value xid='210' description='asleep at 2:01' color="#33cccc" >1.0</value>
+<value xid='211' description='asleep at 2:02' color="#33cccc" >1.0</value>
+<value xid='212' description='asleep at 2:03' color="#33cccc" >1.0</value>
+<value xid='213' description='asleep at 2:04' color="#33cccc" >1.0</value>
+<value xid='214' description='asleep at 2:05' color="#33cccc" >1.0</value>
+<value xid='215' description='asleep at 2:06' color="#33cccc" >1.0</value>
+<value xid='216' description='asleep at 2:07' color="#33cccc" >1.0</value>
+<value xid='217' description='asleep at 2:08' color="#33cccc" >1.0</value>
+<value xid='218' description='asleep at 2:09' color="#33cccc" >1.0</value>
+<value xid='219' description='asleep at 2:10' color="#33cccc" >1.0</value>
+<value xid='220' description='asleep at 2:11' color="#33cccc" >1.0</value>
+<value xid='221' description='asleep at 2:12' color="#33cccc" >1.0</value>
+<value xid='222' description='asleep at 2:13' color="#33cccc" >1.0</value>
+<value xid='223' description='asleep at 2:14' color="#33cccc" >1.0</value>
+<value xid='224' description='asleep at 2:15' color="#33cccc" >1.0</value>
+<value xid='225' description='asleep at 2:16' color="#33cccc" >1.0</value>
+<value xid='226' description='awake at 2:17' color="#ff3366" >2.0</value>
+<value xid='227' description='asleep at 2:18' color="#33cccc" >1.0</value>
+<value xid='228' description='awake at 2:19' color="#ff3366" >2.0</value>
+<value xid='229' description='asleep at 2:20' color="#33cccc" >1.0</value>
+<value xid='230' description='asleep at 2:21' color="#33cccc" >1.0</value>
+<value xid='231' description='awake at 2:22' color="#ff3366" >2.0</value>
+<value xid='232' description='asleep at 2:23' color="#33cccc" >1.0</value>
+<value xid='233' description='asleep at 2:24' color="#33cccc" >1.0</value>
+<value xid='234' description='asleep at 2:25' color="#33cccc" >1.0</value>
+<value xid='235' description='asleep at 2:26' color="#33cccc" >1.0</value>
+<value xid='236' description='asleep at 2:27' color="#33cccc" >1.0</value>
+<value xid='237' description='asleep at 2:28' color="#33cccc" >1.0</value>
+<value xid='238' description='asleep at 2:29' color="#33cccc" >1.0</value>
+<value xid='239' description='asleep at 2:30' color="#33cccc" >1.0</value>
+<value xid='240' description='asleep at 2:31' color="#33cccc" >1.0</value>
+<value xid='241' description='asleep at 2:32' color="#33cccc" >1.0</value>
+<value xid='242' description='asleep at 2:33' color="#33cccc" >1.0</value>
+<value xid='243' description='asleep at 2:34' color="#33cccc" >1.0</value>
+<value xid='244' description='asleep at 2:35' color="#33cccc" >1.0</value>
+<value xid='245' description='asleep at 2:36' color="#33cccc" >1.0</value>
+<value xid='246' description='asleep at 2:37' color="#33cccc" >1.0</value>
+<value xid='247' description='asleep at 2:38' color="#33cccc" >1.0</value>
+<value xid='248' description='asleep at 2:39' color="#33cccc" >1.0</value>
+<value xid='249' description='asleep at 2:40' color="#33cccc" >1.0</value>
+<value xid='250' description='asleep at 2:41' color="#33cccc" >1.0</value>
+<value xid='251' description='asleep at 2:42' color="#33cccc" >1.0</value>
+<value xid='252' description='asleep at 2:43' color="#33cccc" >1.0</value>
+<value xid='253' description='asleep at 2:44' color="#33cccc" >1.0</value>
+<value xid='254' description='asleep at 2:45' color="#33cccc" >1.0</value>
+<value xid='255' description='asleep at 2:46' color="#33cccc" >1.0</value>
+<value xid='256' description='asleep at 2:47' color="#33cccc" >1.0</value>
+<value xid='257' description='asleep at 2:48' color="#33cccc" >1.0</value>
+<value xid='258' description='asleep at 2:49' color="#33cccc" >1.0</value>
+<value xid='259' description='asleep at 2:50' color="#33cccc" >1.0</value>
+<value xid='260' description='asleep at 2:51' color="#33cccc" >1.0</value>
+<value xid='261' description='asleep at 2:52' color="#33cccc" >1.0</value>
+<value xid='262' description='asleep at 2:53' color="#33cccc" >1.0</value>
+<value xid='263' description='asleep at 2:54' color="#33cccc" >1.0</value>
+<value xid='264' description='asleep at 2:55' color="#33cccc" >1.0</value>
+<value xid='265' description='asleep at 2:56' color="#33cccc" >1.0</value>
+<value xid='266' description='asleep at 2:57' color="#33cccc" >1.0</value>
+<value xid='267' description='asleep at 2:58' color="#33cccc" >1.0</value>
+<value xid='268' description='asleep at 2:59' color="#33cccc" >1.0</value>
+<value xid='269' description='asleep at 3:00' color="#33cccc" >1.0</value>
+<value xid='270' description='asleep at 3:01' color="#33cccc" >1.0</value>
+<value xid='271' description='asleep at 3:02' color="#33cccc" >1.0</value>
+<value xid='272' description='asleep at 3:03' color="#33cccc" >1.0</value>
+<value xid='273' description='asleep at 3:04' color="#33cccc" >1.0</value>
+<value xid='274' description='asleep at 3:05' color="#33cccc" >1.0</value>
+<value xid='275' description='asleep at 3:06' color="#33cccc" >1.0</value>
+<value xid='276' description='asleep at 3:07' color="#33cccc" >1.0</value>
+<value xid='277' description='asleep at 3:08' color="#33cccc" >1.0</value>
+<value xid='278' description='asleep at 3:09' color="#33cccc" >1.0</value>
+<value xid='279' description='asleep at 3:10' color="#33cccc" >1.0</value>
+<value xid='280' description='asleep at 3:11' color="#33cccc" >1.0</value>
+<value xid='281' description='asleep at 3:12' color="#33cccc" >1.0</value>
+<value xid='282' description='asleep at 3:13' color="#33cccc" >1.0</value>
+<value xid='283' description='asleep at 3:14' color="#33cccc" >1.0</value>
+<value xid='284' description='asleep at 3:15' color="#33cccc" >1.0</value>
+<value xid='285' description='awake at 3:16' color="#ff3366" >2.0</value>
+<value xid='286' description='awake at 3:17' color="#ff3366" >2.0</value>
+<value xid='287' description='awake at 3:18' color="#ff3366" >2.0</value>
+<value xid='288' description='awake at 3:19' color="#ff3366" >2.0</value>
+<value xid='289' description='awake at 3:20' color="#ff3366" >2.0</value>
+<value xid='290' description='awake at 3:21' color="#ff3366" >2.0</value>
+<value xid='291' description='awake at 3:22' color="#ff3366" >2.0</value>
+<value xid='292' description='awake at 3:23' color="#ff3366" >2.0</value>
+<value xid='293' description='asleep at 3:24' color="#33cccc" >1.0</value>
+<value xid='294' description='asleep at 3:25' color="#33cccc" >1.0</value>
+<value xid='295' description='awake at 3:26' color="#ff3366" >2.0</value>
+<value xid='296' description='asleep at 3:27' color="#33cccc" >1.0</value>
+<value xid='297' description='asleep at 3:28' color="#33cccc" >1.0</value>
+<value xid='298' description='asleep at 3:29' color="#33cccc" >1.0</value>
+<value xid='299' description='asleep at 3:30' color="#33cccc" >1.0</value>
+<value xid='300' description='asleep at 3:31' color="#33cccc" >1.0</value>
+<value xid='301' description='asleep at 3:32' color="#33cccc" >1.0</value>
+<value xid='302' description='asleep at 3:33' color="#33cccc" >1.0</value>
+<value xid='303' description='asleep at 3:34' color="#33cccc" >1.0</value>
+<value xid='304' description='asleep at 3:35' color="#33cccc" >1.0</value>
+<value xid='305' description='asleep at 3:36' color="#33cccc" >1.0</value>
+<value xid='306' description='asleep at 3:37' color="#33cccc" >1.0</value>
+<value xid='307' description='asleep at 3:38' color="#33cccc" >1.0</value>
+<value xid='308' description='asleep at 3:39' color="#33cccc" >1.0</value>
+<value xid='309' description='asleep at 3:40' color="#33cccc" >1.0</value>
+<value xid='310' description='asleep at 3:41' color="#33cccc" >1.0</value>
+<value xid='311' description='asleep at 3:42' color="#33cccc" >1.0</value>
+<value xid='312' description='asleep at 3:43' color="#33cccc" >1.0</value>
+<value xid='313' description='asleep at 3:44' color="#33cccc" >1.0</value>
+<value xid='314' description='asleep at 3:45' color="#33cccc" >1.0</value>
+<value xid='315' description='asleep at 3:46' color="#33cccc" >1.0</value>
+<value xid='316' description='asleep at 3:47' color="#33cccc" >1.0</value>
+<value xid='317' description='asleep at 3:48' color="#33cccc" >1.0</value>
+<value xid='318' description='asleep at 3:49' color="#33cccc" >1.0</value>
+<value xid='319' description='asleep at 3:50' color="#33cccc" >1.0</value>
+<value xid='320' description='asleep at 3:51' color="#33cccc" >1.0</value>
+<value xid='321' description='asleep at 3:52' color="#33cccc" >1.0</value>
+<value xid='322' description='asleep at 3:53' color="#33cccc" >1.0</value>
+<value xid='323' description='asleep at 3:54' color="#33cccc" >1.0</value>
+<value xid='324' description='asleep at 3:55' color="#33cccc" >1.0</value>
+<value xid='325' description='asleep at 3:56' color="#33cccc" >1.0</value>
+<value xid='326' description='asleep at 3:57' color="#33cccc" >1.0</value>
+<value xid='327' description='asleep at 3:58' color="#33cccc" >1.0</value>
+<value xid='328' description='asleep at 3:59' color="#33cccc" >1.0</value>
+<value xid='329' description='asleep at 4:00' color="#33cccc" >1.0</value>
+<value xid='330' description='asleep at 4:01' color="#33cccc" >1.0</value>
+<value xid='331' description='asleep at 4:02' color="#33cccc" >1.0</value>
+<value xid='332' description='asleep at 4:03' color="#33cccc" >1.0</value>
+<value xid='333' description='asleep at 4:04' color="#33cccc" >1.0</value>
+<value xid='334' description='asleep at 4:05' color="#33cccc" >1.0</value>
+<value xid='335' description='asleep at 4:06' color="#33cccc" >1.0</value>
+<value xid='336' description='asleep at 4:07' color="#33cccc" >1.0</value>
+<value xid='337' description='asleep at 4:08' color="#33cccc" >1.0</value>
+<value xid='338' description='asleep at 4:09' color="#33cccc" >1.0</value>
+<value xid='339' description='asleep at 4:10' color="#33cccc" >1.0</value>
+<value xid='340' description='asleep at 4:11' color="#33cccc" >1.0</value>
+<value xid='341' description='asleep at 4:12' color="#33cccc" >1.0</value>
+<value xid='342' description='asleep at 4:13' color="#33cccc" >1.0</value>
+<value xid='343' description='asleep at 4:14' color="#33cccc" >1.0</value>
+<value xid='344' description='asleep at 4:15' color="#33cccc" >1.0</value>
+<value xid='345' description='asleep at 4:16' color="#33cccc" >1.0</value>
+<value xid='346' description='asleep at 4:17' color="#33cccc" >1.0</value>
+<value xid='347' description='asleep at 4:18' color="#33cccc" >1.0</value>
+<value xid='348' description='asleep at 4:19' color="#33cccc" >1.0</value>
+<value xid='349' description='asleep at 4:20' color="#33cccc" >1.0</value>
+<value xid='350' description='asleep at 4:21' color="#33cccc" >1.0</value>
+<value xid='351' description='asleep at 4:22' color="#33cccc" >1.0</value>
+<value xid='352' description='asleep at 4:23' color="#33cccc" >1.0</value>
+<value xid='353' description='asleep at 4:24' color="#33cccc" >1.0</value>
+<value xid='354' description='asleep at 4:25' color="#33cccc" >1.0</value>
+<value xid='355' description='asleep at 4:26' color="#33cccc" >1.0</value>
+<value xid='356' description='asleep at 4:27' color="#33cccc" >1.0</value>
+<value xid='357' description='asleep at 4:28' color="#33cccc" >1.0</value>
+<value xid='358' description='asleep at 4:29' color="#33cccc" >1.0</value>
+<value xid='359' description='asleep at 4:30' color="#33cccc" >1.0</value>
+<value xid='360' description='awake at 4:31' color="#ff3366" >2.0</value>
+<value xid='361' description='awake at 4:32' color="#ff3366" >2.0</value>
+</graph>
+</graphs>
+</chart>
+</data>
+</settings>

@@ -1,0 +1,246 @@
+NAME
+    WebService::FitBit - OO Perl API used to fetch fitness data from
+    fitbit.com
+
+VERSION
+    version 0.1
+
+SYNOPSIS
+        use WebService::FitBit;
+
+        # pulls default config from ~/.fitbit -- init that first, with
+        # 'initialize_fitbit_config_file' command
+        my $fb = WebService::FitBit->new();
+
+        # No date defaults to today
+        my @log = $fb->intraday_calories_burned();
+        foreach (@log) {
+            printf "time = %s -> calories = %s\n" , %$_;
+        }
+
+        printf "calories burned = %s\n" , $fb->calories_burned('2010-05-03');
+        printf "active score    = %s\n" , $fb->active_score('2010-05-03');
+        printf "steps           = %s\n" , $fb->steps_taken('2010-05-03');
+
+DESCRIPTION
+    "WebService::FitBit" provides an OO API for fetching fitness data from
+    fitbit.com. Currently there is no official published API.
+    "WebService::FitBit" works by accssing the XML feeds that drive the
+    Flash/JavaScript-based interface at fibit.com. That means that changes
+    to the location of format of those XML feeds could produce errors --
+    caveat user.
+
+    Intraday (5min and 1min intervals) logs are provided for:
+
+     - calories burned
+     - activity score
+     - steps taken
+     - sleep activity (every 1 min)
+
+    Historical (aggregate) info is provided for:
+
+     - calories burned / consumed
+     - activity score
+     - steps taken
+     - distance travels (miles)
+     - sleep (total time in hours, and times awoken)
+
+METHODS
+  new
+        my $fb = WebService::FitBit->new();
+        my $fb = WebService::FitBit->new({ config => 'alternate/file/location' });
+        my $fb = WebService::FitBit->new({
+          sid     => $sid ,
+          uid     => $uid ,
+          user_id => $user_id ,
+        });
+
+    Returns a WebService::FitBit object. Generally you'll want to use the
+    default form, which pulls required parameters out of $ENV{HOME}/.fitbit.
+    There is a helper command included in the dist --
+    "initialize_fitbit_config_file" -- which will prompt for an account name
+    and password and then use those to retrieve the required values from
+    <http://fitbit.com>
+
+    If you prefer, you can specify an alternate config file location with
+    the 'config' parameter, or specify the required 'sid', 'uid', and
+    'user_id' values directly.
+
+    If 'sid', 'uid', or 'user_id' parameters are supplied, they will
+    override any parameters read from the config.
+
+  active_score
+        $score = $fb->active_score();
+        $score = $fb->active_score('2010-10-20');
+
+    Returns the active score for a given date. Defaults to current date if
+    none given.
+
+  activities_breakdown
+        my $activities_breakdown_hash = $fb->activities_breakdown();
+        my $activities_breakdown_hash = $fb->activities_breakdown('2010-10-20');
+
+    Returns a hashref summarizing what percentage of the given date was
+    spent in each of four activity level categories: 'sedentary', 'lightly',
+    'fairly', and 'very'. If no date is given, defaults to the current date.
+
+    NOTE: The four values in the hash will sum to (approximately) 100, not
+    1. That is, if half of the date was in the 'sedentary' level, the
+    'sedentary' key in the hashref would have a value of '50'.
+
+  calories_burned
+        $calories_burned = $self->calories_burned();
+        $calories_burned = $self->calories_burned('2010-10-20');
+
+    Returns the number of calories burned on the given date. Defaults to the
+    current date if none given.
+
+  calories_consumed
+        $calories_consumed = $self->calories_consumed();
+        $calories_consumed = $self->calories_consumed('2010-10-20');
+
+    Returns the number of calories consumed on the given date. Defaults to
+    the current date if none given.
+
+  calories_in_out
+        $calories_in_out_hashref = $fb->calories_in_out();
+        $calories_in_out_hashref = $fb->calories_in_out('2010-10-20');
+
+    Returns a hashref with information about calories burned and consumed on
+    the given day. Calories burned are under the 'burned' key; calories
+    consumed are under the 'consumed' key.
+
+  distance_from_steps
+        $distance_in_miles = $fb->distance_from_steps();
+        $distance_in_miles = $fb->distance_from_steps('2010-10-20');
+
+    Returns the distance walked on the given date, in miles. Defaults to the
+    current date, if none given.
+
+  intraday_active_score
+      @intraday_active_scores = $fb->intraday_active_score();
+      @intraday_active_scores = $fb->intraday_active_score('2010-10-20');
+
+    Returns a list of hashrefs, each of the form 'time => value'. Times are
+    in five minute intervals, running from '00:00' to '23:55'. Values are
+    the activity score for that particular interval of the day.
+
+    Note that when requesting data for the current day, you still get the
+    full range of time values, even though some of them haven't occurred
+    yet.
+
+    Takes a date argument; defaults to the current date if none is given.
+
+  intraday_calories_burned
+      @intraday_calories_burned = $fb->intraday_calories_burned();
+      @intraday_calories_burned = $fb->intraday_calories_burned('2010-10-20');
+
+    Returns a list of hashrefs, each of the form 'time => value'. Times are
+    in five minute intervals, running from '00:00' to '23:55'. Values are
+    the calories burned during that particular interval of the day.
+
+    Note that when requesting data for the current day, you still get the
+    full range of time values, even though some of them haven't occurred
+    yet.
+
+    Takes a date argument; defaults to the current date if none is given.
+
+  intraday_sleep
+    NOT YET IMPLEMENTED. Patches welcomed.
+
+  intraday_steps
+      @intraday_steps = $fb->intraday_steps();
+      @intraday_steps = $fb->intraday_steps('2010-10-20');
+
+    Returns a list of hashrefs, each of the form "( time =" value )>. Times
+    are in five minute intervals, running from '00:00' to '23:55'. Values
+    are the number of steps taken during that particular interval of the
+    day.
+
+    Note that when requesting data for the current day, you still get the
+    full range of time values, even though some of them haven't occurred
+    yet.
+
+    Takes a date argument; defaults to the current date if none is given.
+
+  minutes_active
+        $minutes_active_hashref = $fb->minutes_active();
+        $minutes_active_hashref = $fb->minutes_active('2010-10-20');
+
+    Returns a hashref containing information about the time spent in the
+    'lightly', 'fairly', and 'very' activity levels for the given date.
+    Defaults to the current date if none given.
+
+    Values are expressed in fractional hours. I.e., if the 'very' key has a
+    value of '0.50', that indicates that 30 minutes were spent in that
+    activity level.
+
+  steps_taken
+        $steps_taken = $fb->steps_taken();
+        $steps_taken = $fb->steps_taken('2010-10-20');
+
+    Returns the number of steps taken on the given date. Defaults to the
+    current date if none given.
+
+  time_asleep
+        $hours_asleep = $fb->time_asleep();
+        $hours_asleep = $fb->time_asleep('2010-10-20');
+
+    Returns the amount of time spent asleep on the given day. Defaults to
+    the current date if none given.
+
+    The value is expressed in fractional hours. I.e., a value of 7.5
+    indicates 7 hours and 30 minutes spent asleep.
+
+    TODO Currently unclear if this value is the sum of all sleeps on a given
+    day or just the value from the first or the value from the longest.
+
+  times_woken_up
+        $times_woken_up = $fb->times_woken_up();
+        $times_woken_up = $fb->times_woken_up('2010-10-20');
+
+    Returns the number of times woken up on the given day. Defaults to the
+    current date if none given.
+
+    TODO Currently unclear if this value is the sum of all sleeps on a given
+    day or just the value from the first or the value from the longest.
+
+  weight
+        $weight = $fb->weight();
+        $weight = $fb->weight('2010-10-20');
+
+    Returns the weight value for a given date, or the current date if none
+    is given.
+
+    Note that the value returned for a day where no explict value was
+    entered is an interpolation done on the FitBit server side. Currently
+    there is no way to retrieve only the data that was explictly entered.
+
+KNOWN_ISSUES
+    At this time, if you attempt to tally the intraday (5min) logs for the
+    total daily number, this number will NOT match the number from the
+    total_*_ API call. This is due to the way that FitBit feeds the intraday
+    values via XML to the flash-graph chart. All numbers are whole numbers,
+    and this rounding issue causes the detailed log tally to be between
+    10-100 points higher.
+
+    For example:
+
+        # Calling total = 2122
+        print "Total calories burned = " . $fb->total_calories()->{burned} . "\n";
+
+        # Tallying total from log entries = 2157
+        my $total = 0;
+        $total += $_->{value} foreach ( $fb->get_calories_log($date) );
+
+AUTHORS
+    *   John SJ Anderson <genehack@genehack.org>
+
+    *   Eric Blue <ericblue76@gmail.com>
+
+COPYRIGHT AND LICENSE
+    This software is copyright (c) 2010 by John SJ Anderson.
+
+    This is free software; you can redistribute it and/or modify it under
+    the same terms as the Perl 5 programming language system itself.
+

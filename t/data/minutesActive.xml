@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<settings>  
+<text_color>#666666</text_color>                            <!-- [#000000] (hex color code) main text color. Every text color can be set individually in the settings below-->
+<digits_after_decimal>2</digits_after_decimal>               <!-- [] (Number) if your value has less digits after decimal then is set here, zeroes will be added -->
+<redraw>true</redraw>                                       <!-- [false] (true / false) if your chart's width or height is set in percents, and redraw is set to true, the chart will be redrawn then screen size changes -->
+<precision>2</precision>                  <!-- [2] (Number) shows how many numbers should be shown after comma for calculated values (percents) -->
+<depth>0</depth>                                           <!-- [0] (Number) the depth of chart and columns (for 3D effect) -->
+<angle>0</angle>                                           <!-- [30] (0 - 90) angle of chart area and columns (for 3D effect) -->
+<js_enabled></js_enabled>                                   <!-- [true] (true / false) In case you don't use any flash - JavaScript communication, you shuold set this setting to false - this will save some CPU and will disable the security warning message which appears when opening the chart from hard drive. -->  
+<decimals_separator>.</decimals_separator>                   <!-- [,] (string) decimal separator. Note, that this is for displaying data only. Decimals in data xml file must be separated with dot -->
+<thousands_separator>none</thousands_separator>
+<column>
+<type></type>                                             <!-- [clustered] (clustered, stacked, 100% stacked, 3d column) -->
+<width>70</width>                                         <!-- [80] (0 - 100) width of column (in percents)  -->
+<spacing>0</spacing>                                      <!-- [5] (Number) space between columns of one category axis value, in pixels. Negative values can be used. -->
+<balloon_text>
+<![CDATA[{description}]]>                      <!-- [] ({title} {value} {series} {percents} {start} {difference} {total}) You can format any data label: {title} will be replaced with real title, {value} - with value and so on. You can add your own text or html code too. -->
+</balloon_text>    
+<grow_effect>elastic</grow_effect>                        <!-- [elastic] (elastic, regular, strong) -->
+<grow_time>0</grow_time>                                  <!-- [0] (Number) grow time in seconds. Leave 0 to appear instantly -->
+<sequenced_grow>true</sequenced_grow>                         <!-- [false] (true / false) whether columns should grow at the same time or one after another -->        
+<hover_brightness>50</hover_brightness>                     <!-- [0] (from -255 to 255) The column may darken/lighten when the use rolls over it. The intensity may be set here -->
+<bullet_offset>16</bullet_offset>
+</column>
+<line>                                                      <!-- Here are general settings for "line" graph type. You can set most of these settings for individual lines in graph settings below -->
+<connect>true</connect>                                       <!-- [false] (true / false) whether to connect points if data is missing -->
+<width>2</width>                                           <!-- [2] (Number) line width -->
+<alpha></alpha>                                           <!-- [100] (Number) line alpha -->
+<fill_alpha></fill_alpha>                                 <!-- [0] (Number) fill alpha -->
+<bullet>round</bullet>                                    <!-- [] (square, round, square_outlined, round_outlined, square_outline, round_outline, filename.swf) can be used predefined bullets or loaded custom bullets. Leave empty if you don't want to have bullets at all. Outlined bullets use plot area color for outline color -->
+<bullet_size>4</bullet_size>                               <!-- [8] (Number) bullet size -->
+<balloon_text>                                                    
+<![CDATA[{description}]]>                      <!-- [] ({title} {value} {series} {percents} {start} {difference} {total}) You can format any data label: {title} will be replaced with real title, {value} - with value and so on. You can add your own text or html code too. -->
+</balloon_text>    
+</line>
+<background>                                                <!-- BACKGROUND -->
+<color></color>                                           <!-- [#FFFFFF] (hex color code) Separate color codes with comas for gradient -->
+<alpha></alpha>                                           <!-- [0] (0 - 100) use 0 if you are using custom swf or jpg for background -->
+<border_color></border_color>                             <!-- [#000000] (hex color code) -->
+<border_alpha>0</border_alpha>                           <!-- [0] (0 - 100) -->
+<file></file>                                             <!-- [] (filename) swf or jpg file of a background. Do not use progressive jpg file, it will be not visible with flash player 7 -->
+</background>
+<plot_area>                                                 <!-- PLOT AREA (the area between axes) -->
+<color>#ffffff</color>                                           <!-- [#FFFFFF] (hex color code) Separate color codes with comas for gradient -->
+<alpha>100</alpha>                                           <!-- [#FFFFFF] (hex color code) Separate color codes with comas for gradient -->
+<border_color>666666</border_color>                             <!-- [#000000] (hex color code) -->                                        
+<border_alpha>0</border_alpha>                             <!-- [0] (0 - 100) -->                                            
+<margins>                                                 <!-- plot area margins -->
+<left>40</left>                                         <!-- [60](Number / Number%) --> 
+<top>5</top>                                           <!-- [60](Number / Number%) --> 
+<right>0</right>                                       <!-- [60](Number / Number%) -->
+<bottom>0</bottom>                                     <!-- [80](Number / Number%) -->
+</margins>
+</plot_area>
+<grid>                                                      <!-- GRID -->
+<category>                                                <!-- category axis grid -->                                                     
+<color></color>
+<alpha>0</alpha>                                        <!-- [15] (0 - 100) -->
+</category>
+<value>                                                   <!-- value axis grid -->      
+<color>#FFFFFF</color>
+<alpha>100</alpha>                                        <!-- [15] (0 - 100) -->
+<approx_count>8</approx_count>                          <!-- [10] (Number) approximate number of gridlines -->
+</value>
+</grid>
+<values>                                                    <!-- VALUES -->
+<category>                                                <!-- category axis -->
+<enabled>true</enabled>
+<!-- [#FFFFFF] (hex color code) Separate color codes with comas for gradient -->
+<!-- [#FFFFFF] (hex color code) Separate color codes with comas for gradient -->
+<!-- [#FFFFFF] (hex color code) Separate color codes with comas for gradient -->
+<rotate>89</rotate>           <!-- [0] (0 - 90) angle of rotation. If you want to rotate by degree from 1 to 89, you must have font.swf file in fonts folder -->
+</category>
+<value>                                                   <!-- value axis -->
+<enabled>true</enabled>
+<!-- [#FFFFFF] (hex color code) Separate color codes with comas for gradient -->
+<min>0.0</min>                                            <!-- [] (Number) minimum value of this axis. If empty, this value will be calculated automatically. -->
+<max>3.35</max>                                             <!-- [] (Number) maximum value of this axis. If empty, this value will be calculated automatically -->
+<skip_first></skip_first>                               <!-- [true] (true / false) to skip or not first value -->
+<skip_last>false</skip_last>                                 <!-- [false] (true / false) to skip or not last value -->
+<frequency>1</frequency>
+<integers_only>false</integers_only>                         <!-- [false] (true / false) if set to true, values with decimals will be omitted -->
+</value>
+</values>
+<axes>                                                      <!-- axes -->
+<category>                                                <!-- category axis -->
+<alpha>0</alpha>                                        <!-- [100] (0 - 100) -->
+<width>0</width>                                         <!-- [2] (Number) line width, 0 for hairline -->
+</category>
+<value>                                                   <!-- value axis -->
+<color>#FFFFFF</color>
+<alpha>100</alpha>                                        <!-- [100] (0 - 100) -->
+<width>0</width>                                        <!-- [2] (Number) line width, 0 for hairline -->
+<tick_length>5</tick_length>                            <!-- [7] (Number) -->
+</value>
+</axes>  
+<balloon>                                                   <!-- BALLOON -->
+<enabled>true</enabled>                                       <!-- [true] (true / false) -->
+<color></color>                                           <!-- [] (hex color code) balloon background color. If empty, slightly darker then current column color will be used -->
+<alpha>80</alpha>                                           <!-- [100] (0 - 100) -->
+<text_color>#ffffff</text_color>                                 <!-- [0xFFFFFF] (hex color code) -->
+<text_size></text_size>                                   <!-- [text_size] (Number) -->
+<max_width></max_width>                                   <!-- [220] (Number) The maximum width of a balloon -->
+<corner_radius>0</corner_radius>                           <!-- [0] (Number) Corner radius of a balloon. If you set it > 0, the balloon will not display arrow -->
+<border_width>0</border_width>                             <!-- [0] (Number) -->
+<border_alpha>60</border_alpha>                             <!-- [balloon.alpha] (Number) -->
+<border_color>#ffffff</border_color>                             <!-- [balloon.color] (hex color code) -->        
+</balloon>
+<legend>                                                    <!-- LEGEND -->
+<enabled>false</enabled>                                  <!-- [true] (true / false) -->
+</legend>  
+<error_messages>                                            <!-- "error_messages" settings will be applied for all error messages except the one which is showed if settings file wasn't found -->
+<enabled>false</enabled>                                       <!-- [true] (true / false) -->
+<x></x>                                                   <!-- [] (Number / Number% / !Number) x position of error message. If not set, will be aligned to the center -->
+<y></y>                                                   <!-- [] (Number / Number% / !Number) y position of error message. If not set, will be aligned to the center -->
+<color></color>                                           <!-- [#BBBB00] (hex color code) background color of error message. Separate color codes with comas for gradient -->
+<alpha></alpha>                                           <!-- [100] (0 - 100) background alpha -->
+<text_color></text_color>                                 <!-- [#FFFFFF] (hex color code) -->
+<text_size></text_size>                                   <!-- [text_size] (Number) -->
+</error_messages>    
+<strings>
+<no_data></no_data>                                       <!-- [No data for selected period] (text) if data is missing, this message will be displayed -->
+</strings>  
+<!-- [#FFFFFF] (hex color code) Separate color codes with comas for gradient -->
+<graphs>                                                    <!-- GRAPHS SETTINGS. These settings can also be specified in data file, as attributes of <graph>, in this case you can delete everything from <graphs> to </graphs> (including) -->
+<graph gid='0'>
+<color>#a3e0e0</color>                                  <!-- [] (hex color code) -->
+</graph>
+<graph gid='1'>
+<color>#ffbb33</color>                                  <!-- [] (hex color code) -->
+</graph>
+<graph gid='2'>
+<color>#ff3366</color>                                  <!-- [] (hex color code) -->
+</graph>
+</graphs>
+<data>
+<chart>
+<series>
+<value xid='0'></value>
+</series>
+<graphs>
+<graph gid='0'>
+<value xid='0' description='0.35 hours lightly active on Tue, Aug 17' color="#a3e0e0" url='/activities/2010/08/17'>0.35</value>
+</graph>
+<graph gid='1'>
+<value xid='0' description='0.13 hours fairly active on Tue, Aug 17' color="#ffbb33" url='/activities/2010/08/17'>0.13</value>
+</graph>
+<graph gid='2'>
+<value xid='0' description='0 hours very active on Tue, Aug 17' color="#ff3366" url='/activities/2010/08/17'>0.0</value>
+</graph>
+</graphs>
+</chart>
+</data>
+</settings>

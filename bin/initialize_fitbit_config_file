@@ -1,0 +1,122 @@
+#! /opt/perl/bin/perl
+# PODNAME: initialize_fitbit_config_file
+# ABSTRACT: generate a ~/.fitbit config for use by WebService::FitBit
+use strictures 1;
+use 5.010;
+
+use HTTP::Request::Common qw/ POST /;
+use LWP::UserAgent;
+use Term::ReadKey;
+use YAML                  qw/ DumpFile /;
+
+my $email    = prompt_for_email();
+my $password = prompt_for_password();
+
+my $ua = LWP::UserAgent->new( cookie_jar => {} );
+
+my( $uid , $sid ) = login_to_fitbit( $ua , $email , $password );
+my( $user_id    ) = get_user_id_from_fitbit( $ua );
+
+my %config = (
+  uid     => $uid ,
+  sid     => $sid ,
+  user_id => $user_id ,
+);
+
+my $config_file = "$ENV{HOME}/.fitbit";
+
+DumpFile( $config_file , \%config );
+chmod 0400 , $config_file;
+
+say "\n\nWrote config to $config_file";
+
+sub login_to_fitbit {
+  my( $browser , $email , $password ) = @_;
+
+  my $response = $browser->post(
+    'https://www.fitbit.com/login' ,
+    Content => {
+      email    => $email ,
+      password => $password ,
+      login    => 'Log In' ,
+    } ,
+  );
+
+  my( $uid , $sid );
+
+  $ua->cookie_jar->scan( sub {
+    my( undef , $key , $val ) = @_;
+    given( $key ) {
+      when( 'sid' ) { $sid = $val }
+      when( 'uid' ) { $uid = $val }
+    }
+  });
+
+  return( $uid , $sid );
+}
+
+sub get_user_id_from_fitbit {
+  my( $browser ) = @_;
+
+  my $response = $browser->get( 'http://www.fitbit.com/' );
+
+  if( $response->is_success ) {
+    my $content = $response->decoded_content || $response->content;
+    if( $content =~ m|<a href="/user/([^"]+)" | ) { #"
+      return $1;
+    }
+    die "Can't extract user ID";
+  }
+  else { die $response->status_line }
+}
+
+sub prompt_for_email {
+  print "Email associated with your FitBit account? ";
+  chomp( my $email = ReadLine(0));
+  return $email if $email;
+  die "NEED EMAIL!";
+}
+
+sub prompt_for_password {
+  print "FitBit account password? ";
+  ReadMode('noecho');
+  chomp( my $password = ReadLine(0));
+  ReadMode('restore');
+  return $password if $password;
+  die "NEED PASSWORD!";
+}
+
+__END__
+=pod
+
+=head1 NAME
+
+initialize_fitbit_config_file - generate a ~/.fitbit config for use by WebService::FitBit
+
+=head1 VERSION
+
+version 0.1
+
+=head1 AUTHORS
+
+=over 4
+
+=item *
+
+John SJ Anderson <genehack@genehack.org>
+
+=item *
+
+Eric Blue <ericblue76@gmail.com>
+
+=back
+
+=head1 COPYRIGHT AND LICENSE
+
+This software is copyright (c) 2010 by John SJ Anderson.
+
+This is free software; you can redistribute it and/or modify it under
+the same terms as the Perl 5 programming language system itself.
+
+=cut
+
