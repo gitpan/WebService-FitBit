@@ -65,7 +65,7 @@
          "web" : "http://github.com/genehack/webservices-fitbit"
       }
    },
-   "version" : "0.1_3",
+   "version" : "0.1_4",
    "x_Dist_Zilla" : {
       "plugins" : [
          {

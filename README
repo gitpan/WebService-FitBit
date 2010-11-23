@@ -3,7 +3,7 @@ NAME
     fitbit.com
 
 VERSION
-    version 0.1_3
+    version 0.1_4
 
 SYNOPSIS
         use WebService::FitBit;
@@ -13,9 +13,9 @@ SYNOPSIS
         my $fb = WebService::FitBit->new();
 
         # No date defaults to today
-        my @log = $fb->intraday_calories_burned();
-        foreach (@log) {
-            printf "time = %s -> calories = %s\n" , %$_;
+        my $log = $fb->intraday_calories_burned();
+        foreach ($log->all_items) {
+            printf "time = %s -> calories = %s\n" , $_->time , $_->value;
         }
 
         printf "calories burned = %s\n" , $fb->calories_burned('2010-05-03');
@@ -89,15 +89,15 @@ METHODS
     'sedentary' key in the hashref would have a value of '50'.
 
   calories_burned
-        $calories_burned = $self->calories_burned();
-        $calories_burned = $self->calories_burned('2010-10-20');
+        $calories_burned = $fb->calories_burned();
+        $calories_burned = $fb->calories_burned('2010-10-20');
 
     Returns the number of calories burned on the given date. Defaults to the
     current date if none given.
 
   calories_consumed
-        $calories_consumed = $self->calories_consumed();
-        $calories_consumed = $self->calories_consumed('2010-10-20');
+        $calories_consumed = $fb->calories_consumed();
+        $calories_consumed = $fb->calories_consumed('2010-10-20');
 
     Returns the number of calories consumed on the given date. Defaults to
     the current date if none given.
@@ -121,9 +121,9 @@ METHODS
       @intraday_active_scores = $fb->intraday_active_score();
       @intraday_active_scores = $fb->intraday_active_score('2010-10-20');
 
-    Returns a list of hashrefs, each of the form 'time => value'. Times are
-    in five minute intervals, running from '00:00' to '23:55'. Values are
-    the activity score for that particular interval of the day.
+    Returns a WebService::FitBit::IntradayLog object containing
+    WebService::FitBit::IntradayLog::Item objects with the active score for
+    5 minute intervals throughout the day.
 
     Note that when requesting data for the current day, you still get the
     full range of time values, even though some of them haven't occurred
@@ -135,9 +135,9 @@ METHODS
       @intraday_calories_burned = $fb->intraday_calories_burned();
       @intraday_calories_burned = $fb->intraday_calories_burned('2010-10-20');
 
-    Returns a list of hashrefs, each of the form 'time => value'. Times are
-    in five minute intervals, running from '00:00' to '23:55'. Values are
-    the calories burned during that particular interval of the day.
+    Returns a WebService::FitBit::IntradayLog object containing
+    WebService::FitBit::IntradayLog::Item objects with the calories burned
+    for 5 minute intervals throughout the day.
 
     Note that when requesting data for the current day, you still get the
     full range of time values, even though some of them haven't occurred
@@ -152,10 +152,9 @@ METHODS
       @intraday_steps = $fb->intraday_steps();
       @intraday_steps = $fb->intraday_steps('2010-10-20');
 
-    Returns a list of hashrefs, each of the form "( time =" value )>. Times
-    are in five minute intervals, running from '00:00' to '23:55'. Values
-    are the number of steps taken during that particular interval of the
-    day.
+    Returns a WebService::FitBit::IntradayLog object containing
+    WebService::FitBit::IntradayLog::Item objects with the steps taken for 5
+    minute intervals throughout the day.
 
     Note that when requesting data for the current day, you still get the
     full range of time values, even though some of them haven't occurred
@@ -216,6 +215,24 @@ METHODS
     entered is an interpolation done on the FitBit server side. Currently
     there is no way to retrieve only the data that was explictly entered.
 
+INTRADAY LOGS
+    "intraday_*" methods return 'WebService::FitBit::IntradayLog' objects.
+    That object has one useful method, 'all_items', which returns a list of
+    'WebService::FitBit::IntradayLog::Item' objects. Those objects support
+    'time' and 'value' accessors.
+
+    To print out the calories burned during five minute intervals, you can
+    do something like:
+
+        my $log = $fb->intraday_calories_burned();
+        for my $item ( $log->all_items ) {
+          printf "%S -> %S\n" , $item->time , $item->value;
+        }
+
+    Over time, the 'WebService::FitBit::IntradayLog' object will likely be
+    extended with convenience methods such as 'max', 'min', 'average', and
+    so on. Suggestions and/or patches are welcomed.
+
 KNOWN_ISSUES
     At this time, if you attempt to tally the intraday (5min) logs for the
     total daily number, this number will NOT match the number from the
@@ -231,9 +248,8 @@ KNOWN_ISSUES
 
         # Tallying total from log entries = 2157
         my $total = 0;
-        for my $day ( $fb->intraday_calories_burned ) {
-          my( $time , $value ) = %$day;
-          $total += $value;
+        for my $item ( $fb->intraday_calories_burned->all_items ) {
+          $total += $item->value;
         }
 
 CREDITS

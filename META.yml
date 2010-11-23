@@ -41,7 +41,7 @@ resources:
   bugtracker: http://rt.cpan.org/Public/Dist/Display.html?Name=WebService-FitBit
   homepage: http://search.cpan.org/dist/WebService-FitBit/
   repository: git://github.com/genehack/webservices-fitbit.git
-version: 0.1_3
+version: 0.1_4
 x_Dist_Zilla:
   plugins:
     -

@@ -5,16 +5,36 @@ use strictures 1;
 
 use Test::More;
 
-sub intraday_active_score :Test(2) {
+sub intraday_active_score :Test(290) {
   my $test = shift;
 
+  my $log = $test->{fb}->intraday_active_score();
+  isa_ok( $log , 'WebService::FitBit::IntradayLog' );
+
+  my @parsed_log;
+  foreach ( $log->all_items ) {
+    isa_ok( $_ , 'WebService::FitBit::IntradayLog::Item' );
+    push @parsed_log , { $_->time , $_->value };
+  }
+
   my $test_data = _test_data();
+  is_deeply( \@parsed_log , $test_data , 'intraday_active_score' );
+}
 
-  my @log = $test->{fb}->intraday_active_score();
-  is_deeply( \@log , $test_data , 'intraday_active_score' );
+sub intraday_active_score_with_date :Test(290) {
+  my $test = shift;
 
-  my @log_by_date = $test->{fb}->intraday_active_score('2010-10-20');
-  is_deeply( \@log_by_date , $test_data , 'intraday_active_score with date ' );
+  my $log = $test->{fb}->intraday_active_score('2010-10-20');
+  isa_ok( $log , 'WebService::FitBit::IntradayLog' );
+
+  my @parsed_log;
+  foreach ( $log->all_items ) {
+    isa_ok( $_ , 'WebService::FitBit::IntradayLog::Item' );
+    push @parsed_log , { $_->time , $_->value };
+  }
+
+  my $test_data = _test_data();
+  is_deeply( \@parsed_log , $test_data , 'intraday_active_score' );
 }
 
 sub _test_data {

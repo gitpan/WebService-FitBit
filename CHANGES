@@ -1,8 +1,38 @@
 Revision History for WebService-FitBit
 ======================================
 
-0.1_3
+0.1_4
 -----
+
+commit 6dd46f8d790b54b9330443383ea5e0cacbcbd121
+Author: John SJ Anderson <genehack@genehack.org>
+Date:   Tue Nov 23 05:07:57 2010 -0500
+
+    improve return values of intraday_* methods
+    
+    * now return WebService::FitBit::IntradayLog object
+    * has 'all_items' method that returns a collection
+      of WebService::FitBit::IntradayLog::Item objects
+    * each of those has 'time', 'value' methods
+    * works around annoyances of returning list of hashrefs
+
+commit e245cd3be975d1b0a9b5a0622822c6f593ee8f60
+Author: John SJ Anderson <genehack@genehack.org>
+Date:   Tue Nov 23 04:42:53 2010 -0500
+
+    fix tests to work without config file...
+
+commit 2b2ebf2cce82f95a680ed094edb359de218d27a8
+Author: John SJ Anderson <genehack@genehack.org>
+Date:   Sun Nov 21 23:43:55 2010 -0500
+
+    0.1_3 release
+
+commit d5658fae12f464e249ae7554d8c6302119615186
+Author: John SJ Anderson <genehack@genehack.org>
+Date:   Sun Nov 21 23:43:46 2010 -0500
+
+    even more doc fixes
 
 commit 75c140578d121306f9b29305c445a5419c59f26b
 Author: John SJ Anderson <genehack@genehack.org>

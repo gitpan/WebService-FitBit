@@ -32,7 +32,12 @@ sub setup_fitbit_object :Test(setup) {
     return $mock_response;
   });
 
-  $test->{fb} = WebService::FitBit->new({ _set_browser => $mock_browser });
+  $test->{fb} = WebService::FitBit->new({
+    sid          => 'sid' ,
+    uid          => 'uid' ,
+    user_id      => 'user_id' ,
+    _set_browser => $mock_browser ,
+  });
 }
 
 1;
