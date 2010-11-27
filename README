@@ -3,7 +3,7 @@ NAME
     fitbit.com
 
 VERSION
-    version 0.1_4
+    version 0.1_5
 
 SYNOPSIS
         use WebService::FitBit;
@@ -56,8 +56,9 @@ METHODS
         });
 
     Returns a WebService::FitBit object. Generally you'll want to use the
-    default form, which pulls required parameters out of $ENV{HOME}/.fitbit.
-    There is a helper command included in the dist --
+    default form, which pulls required parameters out of a file called
+    '.fitbit' in your home directory (using the value obtained from
+    "File::HomeDir"). There is a helper command included in the dist --
     "initialize_fitbit_config_file" -- which will prompt for an account name
     and password and then use those to retrieve the required values from
     <http://fitbit.com>

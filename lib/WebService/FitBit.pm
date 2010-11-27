@@ -1,6 +1,6 @@
 package WebService::FitBit;
 BEGIN {
-  $WebService::FitBit::VERSION = '0.1_4';
+  $WebService::FitBit::VERSION = '0.1_5';
 }
 BEGIN {
   $WebService::FitBit::AUTHORITY = 'cpan:GENEHACK';
@@ -15,6 +15,7 @@ use strict;
 use 5.010;
 
 use Carp;
+use File::HomeDir;
 use HTTP::Cookies;
 use LWP::UserAgent;
 use POSIX;
@@ -58,7 +59,7 @@ has '_browser' => (
 sub BUILDARGS {
   my( $class , $args ) = @_;
 
-  my $config_file = $args->{config} // "$ENV{HOME}/.fitbit";
+  my $config_file = $args->{config} // File::HomeDir->my_home . '/.fitbit';
 
   my $config = {};
 
@@ -408,7 +409,7 @@ __PACKAGE__->meta->make_immutable;
 
 package WebService::FitBit::IntradayLog;
 BEGIN {
-  $WebService::FitBit::IntradayLog::VERSION = '0.1_4';
+  $WebService::FitBit::IntradayLog::VERSION = '0.1_5';
 }
 BEGIN {
   $WebService::FitBit::IntradayLog::AUTHORITY = 'cpan:GENEHACK';
@@ -428,7 +429,7 @@ __PACKAGE__->meta->make_immutable;
 
 package WebService::FitBit::IntradayLog::Item;
 BEGIN {
-  $WebService::FitBit::IntradayLog::Item::VERSION = '0.1_4';
+  $WebService::FitBit::IntradayLog::Item::VERSION = '0.1_5';
 }
 BEGIN {
   $WebService::FitBit::IntradayLog::Item::AUTHORITY = 'cpan:GENEHACK';
@@ -451,7 +452,7 @@ WebService::FitBit - OO Perl API used to fetch fitness data from fitbit.com
 
 =head1 VERSION
 
-version 0.1_4
+version 0.1_5
 
 =head1 SYNOPSIS
 
@@ -507,7 +508,8 @@ Historical (aggregate) info is provided for:
     });
 
 Returns a WebService::FitBit object. Generally you'll want to use the default
-form, which pulls required parameters out of $ENV{HOME}/.fitbit. There is a
+form, which pulls required parameters out of a file called '.fitbit' in your
+home directory (using the value obtained from C<File::HomeDir>). There is a
 helper command included in the dist -- C<initialize_fitbit_config_file> --
 which will prompt for an account name and password and then use those to
 retrieve the required values from L<http://fitbit.com>

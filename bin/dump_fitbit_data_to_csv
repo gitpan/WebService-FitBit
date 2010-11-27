@@ -81,7 +81,7 @@ dump_fitbit_data_to_csv - dump the last week's worth of FitBit data to a CSV fil
 
 =head1 VERSION
 
-version 0.1_4
+version 0.1_5
 
 =head1 AUTHORS
 

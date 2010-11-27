@@ -34,6 +34,7 @@ my %WriteMakefileArgs = (
   'NAME' => 'WebService::FitBit',
   'PREREQ_PM' => {
     'Carp' => '0',
+    'File::HomeDir' => '0',
     'HTTP::Cookies' => '0',
     'HTTP::Request::Common' => '0',
     'LWP::UserAgent' => '0',
@@ -47,7 +48,7 @@ my %WriteMakefileArgs = (
     'autodie' => '0',
     'strictures' => '1'
   },
-  'VERSION' => '0.1_4',
+  'VERSION' => '0.1_5',
   'test' => {
     'TESTS' => 't/*.t'
   }

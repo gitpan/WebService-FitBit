@@ -1,8 +1,20 @@
 Revision History for WebService-FitBit
 ======================================
 
-0.1_4
+0.1_5
 -----
+
+commit f32fa3bd7a01cb45d0a45e3e69cb9af31a129399
+Author: John SJ Anderson <genehack@genehack.org>
+Date:   Fri Nov 26 21:27:34 2010 -0500
+
+    use File::HomeDir instead of {HOME}
+
+commit 3628d4423f61f84c963a600c88ced56444c1c6ed
+Author: John SJ Anderson <genehack@genehack.org>
+Date:   Tue Nov 23 05:27:56 2010 -0500
+
+    released v0.1_4
 
 commit 6dd46f8d790b54b9330443383ea5e0cacbcbd121
 Author: John SJ Anderson <genehack@genehack.org>
